@@ -1,5 +1,10 @@
 public class Juego {
 
+	public static void personajes()
+	{
+		System.out.println("comprombacion invocacion");
+	}
+
 	public static void menuPrincipal()
 	{
 		int centinela = 0;
@@ -15,6 +20,7 @@ public class Juego {
 			switch(centinela)
 			{
 				case 1: System.out.println();
+						personajes();
 						break;
 				case 2: System.out.println();
 						break;
