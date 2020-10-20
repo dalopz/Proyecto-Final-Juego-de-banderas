@@ -1,6 +1,6 @@
 import java.util.*;
 import java.util.Arrays;
-import java.lang.System;
+
 
 
 public class pruebaJ {
