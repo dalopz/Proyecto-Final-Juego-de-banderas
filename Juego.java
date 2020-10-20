@@ -74,7 +74,7 @@ public class Juego {
 		do{
 			System.out.println("Ingrese un valor entre 1 y "+indices.length);
 			opc = ConsoleInput.getInt();
-		}while(opc>0);
+		}while(opc==0);
 
 		return opc-1;
 	}
@@ -102,7 +102,7 @@ public class Juego {
 			}
 		}
 	}
-
+		//Menu principal del juego
 	public static void menuPrincipal()
 	{
 		int centinela = 0, elegir_bandera = 0;
@@ -112,25 +112,28 @@ public class Juego {
 
 		do{
 			System.out.println();
-			System.out.println("Escoge una opcion: ");
-			System.out.println("1. Informacion bandera");
+			System.out.println("   ___   ___  ___  _____  _____  ____  __ "); 
+ 			System.out.println("  / _ | / _  / _  / __/ |/ / _  / __/ / / ");
+ 			System.out.println(" / __ |/ ___/ , _/ _//    / // / _/  /_/  ");
+ 			System.out.println("/_/ |_/_/  /_/|_/___/_/|_/____/___/ (_)   ");					
+            System.out.println();                                     
+			//System.out.println("Escoge una opcion: ");
+			System.out.println("1. Aprendamos sobre paises!");
 			System.out.println("2. Grafico de banderas");
-			System.out.println("3. Elegir bandera");
-			System.out.println("4. SALIR");
+			System.out.println("3. SALIR");
 			centinela = ConsoleInput.getInt();
 
 			switch(centinela)
 			{
 				case 1: System.out.println();
-						infoBandera(banderas, indices[0]);
+						elegir_bandera = elegirBandera(indices);
+						infoBandera(banderas, indices[elegir_bandera]);
 						break;
 				case 2: System.out.println();
-						dibujarBandera(banderas, indices[0]);
-						break;
-				case 3: System.out.println();
 						elegir_bandera = elegirBandera(indices);
+						dibujarBandera(banderas, indices[elegir_bandera]);
 						break;
-				case 4: System.out.println("Gracias por jugar!");
+				case 3: System.out.println("Gracias por jugar!");
 						break;
 
 				default: System.out.println();
@@ -140,7 +143,7 @@ public class Juego {
 		}while(centinela!=3);
 		
 	}
-	
+	// Funcion principal e invocacion menu principal
 	public static void main(String[] args) {
 		menuPrincipal();
 	}
