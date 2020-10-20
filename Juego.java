@@ -27,6 +27,54 @@ public class Juego {
 		return indices;
 	}
 
+	public static void imprimirFila(String fila[])
+	{
+		for (int i=0;i<fila.length;i++) {
+			
+	 		if(fila[i].equals("1"))
+	 		{
+	 			System.out.print(ConsoleColors.RED_BACKGROUND+"  ");
+	 		}
+	 		if(fila[i].equals("2"))
+	 		{
+	 			System.out.print(ConsoleColors.BLUE_BACKGROUND+"  ");
+	 		}
+	 		if(fila[i].equals("3"))
+	 		{
+	 			System.out.print(ConsoleColors.WHITE_BACKGROUND+"  ");
+	 		}
+	 		if(fila[i].equals("4"))
+	 		{
+	 			System.out.print(ConsoleColors.YELLOW_BACKGROUND+"  ");
+	 		}		
+			if(fila[i].equals("5"))
+	 		{
+	 			System.out.print(ConsoleColors.GREEN_BACKGROUND+"  ");
+	 		}	
+	 		if(fila[i].equals("6"))
+	 		{
+	 			System.out.print(ConsoleColors.PURPLE_BACKGROUND+"  ");
+	 		}	
+	 		if(fila[i].equals("7"))
+	 		{
+	 			System.out.print(ConsoleColors.CYAN_BACKGROUND+"  ");
+	 		}	
+	 		if(fila[i].equals("8"))
+	 		{
+	 			System.out.print(ConsoleColors.BLACK_BACKGROUND+"  ");
+	 		}	 				 			 			 			 		 		
+		}
+		System.out.println(ConsoleColors.RESET);
+	}
+
+	public static void dibujarBandera(String[] banderas, int indice)
+	{
+		for (int i = indice; i<indice+20; i++){
+
+			imprimirFila(banderas[i].split(";"));
+		}
+	}
+
 	public static void infoBandera(String[] banderas, int indice)
 	{
 		String fila[];
@@ -43,16 +91,6 @@ public class Juego {
 		}
 	}
 
-	public static void capitales()
-	{
-	System.out.println("gfgr");
-	}
-
-	/*public static void personajes()
-	{
-		System.out.println("comprombacion invocacion");
-	}*/
-
 	public static void menuPrincipal()
 	{
 		int centinela = 0;
@@ -64,7 +102,7 @@ public class Juego {
 			System.out.println();
 			System.out.println("Escoge una opcion: ");
 			System.out.println("1. Informacion bandera");
-			System.out.println("2. Jugar con capitales");
+			System.out.println("2. Grafico de banderas");
 			System.out.println("3. SALIR");
 			centinela = ConsoleInput.getInt();
 
@@ -74,7 +112,7 @@ public class Juego {
 						infoBandera(banderas, indices[0]);
 						break;
 				case 2: System.out.println();
-						capitales();
+						dibujarBandera(banderas, indices[0]);
 						break;
 				case 3: System.out.println("Gracias por jugar!");
 						break;
