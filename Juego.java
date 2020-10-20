@@ -67,6 +67,18 @@ public class Juego {
 		System.out.println(ConsoleColors.RESET);
 	}
 
+	public static int elegirBandera(int[] indices)
+	{
+		int opc = 0;
+
+		do{
+			System.out.println("Ingrese un valor entre 1 y "+indices.length);
+			opc = ConsoleInput.getInt();
+		}while(opc>0);
+
+		return opc-1;
+	}
+
 	public static void dibujarBandera(String[] banderas, int indice)
 	{
 		for (int i = indice; i<indice+20; i++){
@@ -93,7 +105,7 @@ public class Juego {
 
 	public static void menuPrincipal()
 	{
-		int centinela = 0;
+		int centinela = 0, elegir_bandera = 0;
 		int indices[] = crearIndices(24);
 		indices = arregloAleatorio(indices);
 		String banderas[] = ConsoleFile.read("info_banderas.csv");
@@ -103,7 +115,8 @@ public class Juego {
 			System.out.println("Escoge una opcion: ");
 			System.out.println("1. Informacion bandera");
 			System.out.println("2. Grafico de banderas");
-			System.out.println("3. SALIR");
+			System.out.println("3. Elegir bandera");
+			System.out.println("4. SALIR");
 			centinela = ConsoleInput.getInt();
 
 			switch(centinela)
@@ -114,7 +127,10 @@ public class Juego {
 				case 2: System.out.println();
 						dibujarBandera(banderas, indices[0]);
 						break;
-				case 3: System.out.println("Gracias por jugar!");
+				case 3: System.out.println();
+						elegir_bandera = elegirBandera(indices);
+						break;
+				case 4: System.out.println("Gracias por jugar!");
 						break;
 
 				default: System.out.println();
