@@ -95,10 +95,10 @@ public class Juego {
 			if(i == indice)
 			{
 				fila = banderas[i].split(";");
-				System.out.println("Pais: "+fila[0]);
+				System.out.println("Capital: "+fila[1]);
 			}	
 			else{
-				System.out.println(banderas[i]);
+				//System.out.println(banderas[i]);
 			}
 		}
 	}
@@ -128,6 +128,7 @@ public class Juego {
 				case 1: System.out.println();
 						elegir_bandera = elegirBandera(indices);
 						infoBandera(banderas, indices[elegir_bandera]);
+						dibujarBandera(banderas, indices[elegir_bandera]);
 						break;
 				case 2: System.out.println();
 						elegir_bandera = elegirBandera(indices);
