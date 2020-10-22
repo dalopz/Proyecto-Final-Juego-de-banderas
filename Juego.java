@@ -4,6 +4,22 @@ import java.util.Arrays;
 
 public class Juego {
 
+	public static int elegirCapital(int[] indices)
+	{
+		int opc = 0;
+
+		do{
+			System.out.println();
+			System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT+"               Que pais crees que es?"+"\033[0m");
+			opc = ConsoleInput.getInt();
+	
+		}while(opc==0);
+
+		return opc-1;
+		
+	}
+
+
 	public static int[] arregloAleatorio(int[] array){
 		Random rgen = new Random();
 
@@ -72,11 +88,18 @@ public class Juego {
 		int opc = 0;
 
 		do{
-			System.out.println("Ingrese un valor entre 1 y "+indices.length);
+			System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT+"Vamos a visitar paises!\n ingresa un numero entre 1 y "+indices.length+"\033[0m");
 			opc = ConsoleInput.getInt();
+
+			if(opc>24)
+		{
+			System.out.println("Opcion no valida");
+		}
+
 		}while(opc==0);
 
 		return opc-1;
+		
 	}
 
 	public static void dibujarBandera(String[] banderas, int indice)
@@ -95,7 +118,10 @@ public class Juego {
 			if(i == indice)
 			{
 				fila = banderas[i].split(";");
-				System.out.println("Capital: "+fila[1]);
+				System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT+"Haz llegado a: "ConsoleColors.WHITE_BOLD_BRIGHT+fila[0]+ConsoleColors.RESET);
+				System.out.println("Capital: "ConsoleColors.WHITE_BOLD_BRIGHT+fila[1]);
+				System.out.println("Idioma: "ConsoleColors.WHITE_BOLD_BRIGHT+fila[2]);
+				System.out.println("Continente: "ConsoleColors.WHITE_BOLD_BRIGHT+fila[3]);
 			}	
 			else{
 				//System.out.println(banderas[i]);
@@ -112,15 +138,19 @@ public class Juego {
 
 		do{
 			System.out.println();
-			System.out.println("   ___   ___  ___  _____  _____  ____  __ "); 
- 			System.out.println("  / _ | / _  / _  / __/ |/ / _  / __/ / / ");
- 			System.out.println(" / __ |/ ___/ , _/ _//    / // / _/  /_/  ");
- 			System.out.println("/_/ |_/_/  /_/|_/___/_/|_/____/___/ (_)   ");					
+			 	System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT +"  _____               _        _    _____   _                ");         
+			  	System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT+" / ____|          (_)| |      | |  / ____(_) | (_)           ");         
+			 	System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT +" | |     __ _ _ __  _| |_ __ _| | | |     _| |_ _  ___   __  ");  
+			 	System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT+" | |    / _` | '_  | | __/ _` | | | |    | | __| |/ _  / __| ");
+				System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT +" | |___| (_| | |_) | | || (_| | | | |____| | |_| |  __/ __   ");
+			  	System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT+" |_____ __,_ | .__/|_|__|__,_ |_| |_____ |_| __|_| ___||___/ ");
+			  	System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT +"             | |                                             ");
+			  	System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT+"             |_|                                             "+"\033[0m");					
             System.out.println();                                     
 			//System.out.println("Escoge una opcion: ");
-			System.out.println("1. Aprendamos sobre paises!");
-			System.out.println("2. Grafico de banderas");
-			System.out.println("3. SALIR");
+			System.out.println(ConsoleColors.WHITE_BOLD_BRIGHT+"1. Comenzar");
+			//System.out.println("2. Grafico de banderas");
+			System.out.println(ConsoleColors.WHITE_BOLD_BRIGHT+"2. SALIR"+ConsoleColors.RESET);
 			centinela = ConsoleInput.getInt();
 
 			switch(centinela)
@@ -129,19 +159,20 @@ public class Juego {
 						elegir_bandera = elegirBandera(indices);
 						infoBandera(banderas, indices[elegir_bandera]);
 						dibujarBandera(banderas, indices[elegir_bandera]);
+						elegirCapital(indices);
 						break;
-				case 2: System.out.println();
+				/*case 2: System.out.println();
 						elegir_bandera = elegirBandera(indices);
 						dibujarBandera(banderas, indices[elegir_bandera]);
-						break;
-				case 3: System.out.println("Gracias por jugar!");
+						break;*/
+				case 2: System.out.println("Gracias por jugar!");
 						break;
 
 				default: System.out.println();
-				System.out.println("Opcion no disponible");
+				System.out.println(ConsoleColors.RED_BRIGHT+"Opcion no disponible");
 			}
 
-		}while(centinela!=3);
+		}while(centinela!=2);
 		
 	}
 	// Funcion principal e invocacion menu principal
